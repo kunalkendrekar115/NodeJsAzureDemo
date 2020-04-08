@@ -12,8 +12,8 @@ pool:
 steps:
 - task: PublishBuildArtifacts@1
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'myWebsiteName' 
 
 - script: |
     npm install
