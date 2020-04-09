@@ -6,15 +6,7 @@
 trigger:
 - master
 
-pool:
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial (b9b8337c-3a37-496b-afe8-023df0fafe0c)'
-    appType: 'webApp'
-    WebAppName: 
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-  vmImage: 'ubuntu-latest'
+
 
 steps:
 - task: NodeTool@0
@@ -25,5 +17,13 @@ steps:
 - script: |
     npm install
   displayName: 'npm install and build'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial (b9b8337c-3a37-496b-afe8-023df0fafe0c)'
+    appType: 'webApp'
+    WebAppName: 'NodeJsAzureDemo'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
   
-- task: PublishBuildArtifacts@1
+
