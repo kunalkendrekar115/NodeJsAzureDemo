@@ -6,8 +6,6 @@
 trigger:
 - master
 
-
-
 steps:
 - task: NodeTool@0
   inputs:
@@ -16,14 +14,7 @@ steps:
 
 - script: |
     npm install
+    npm run build
   displayName: 'npm install and build'
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial (b9b8337c-3a37-496b-afe8-023df0fafe0c)'
-    appType: 'webApp'
-    WebAppName: 'NodeJsAzureDemo'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-  
 
