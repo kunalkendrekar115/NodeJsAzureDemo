@@ -11,6 +11,8 @@ pool:
 
 steps:
 - task: NodeTool@0
+- task: PublishBuildArtifacts@1
+
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
@@ -18,3 +20,4 @@ steps:
 - script: |
     npm install
   displayName: 'npm install and build'
+  
